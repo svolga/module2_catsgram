@@ -11,7 +11,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
 
-import static ru.yandex.practicum.catsgram.Constants.DESCENDING_ORDER;
+import static ru.yandex.practicum.catsgram.Constant.DESCENDING_ORDER;
 
 @Service
 public class PostService {
