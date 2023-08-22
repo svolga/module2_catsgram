@@ -5,6 +5,8 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RestController;
 import ru.yandex.practicum.catsgram.service.HackCatService;
 
+import java.util.Optional;
+
 @RestController
 public class SimpleController {
 
@@ -18,9 +20,12 @@ public class SimpleController {
     // внедрите бин HackCatService
 
     @GetMapping("/do-hack")
-    public void doHack(){
-        // хакните этих котиков
-        hackCatService.doHackNow();
+    public Optional<String> doHack(){
+
+        return hackCatService.doHackNow()
+                .map(password -> "Ура! Пароль подобран: " + password)
+                .or(() -> Optional.of("Не удалось подобрать пароль. "
+                        + " Проверьте состояние и настройки базы данных."));
     }
 
     @GetMapping("/home")
